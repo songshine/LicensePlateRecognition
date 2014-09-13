@@ -1,0 +1,354 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\LPR.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""afxres.rc""     // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\LPR.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 LPR"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "LPR 1.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2012",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_LPR_DIALOG DIALOGEX 0, 0, 488, 330
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "LPR"
+FONT 10, "宋体", 700, 0, 0x86
+BEGIN
+    GROUPBOX        "原始图像",IDC_STATIC,23,19,222,171
+    CONTROL         "",IDC_IMAGESRC,"Static",SS_BLACKRECT,29,34,213,150
+    GROUPBOX        "车牌",IDC_STATIC,43,190,186,45
+    CONTROL         "",IDC_BICAR,"Static",SS_BLACKRECT,85,205,90,23
+    GROUPBOX        "分割字符",IDC_STATIC,7,241,244,67
+    CONTROL         "",IDC_ONE,"Static",SS_BLACKRECT,15,250,26,46
+    CONTROL         "",IDC_TWO,"Static",SS_BLACKRECT,49,250,26,46
+    CONTROL         "",IDC_THREE,"Static",SS_BLACKRECT,83,250,26,46
+    CONTROL         "",IDC_FOUR,"Static",SS_BLACKRECT,117,250,26,46
+    CONTROL         "",IDC_FIVE,"Static",SS_BLACKRECT,151,250,26,46
+    CONTROL         "",IDC_SIX,"Static",SS_BLACKRECT,185,250,26,46
+    CONTROL         "",IDC_SEVEN,"Static",SS_BLACKRECT,219,250,26,46
+    GROUPBOX        "功能区",IDC_STATIC,270,176,149,136
+    PUSHBUTTON      "打开图像",IDC_LOADIMAGE,281,192,48,90
+    GROUPBOX        "识别结果",IDC_STATIC,268,23,175,110
+    EDITTEXT        IDC_RESULT,291,36,121,25,ES_CENTER | ES_AUTOHSCROLL
+    LTEXT           "所用时间:",IDC_STATIC_TIME,293,68,106,55
+    PUSHBUTTON      "识别正确",IDC_BUTTON1,364,218,46,16
+    PUSHBUTTON      "识别有误",IDC_BUTTON2,364,241,46,16
+    PUSHBUTTON      "分割失败",IDC_BUTTON3,364,264,46,16
+    PUSHBUTTON      "字符学习",IDC_BUTTON4,343,193,68,20
+END
+
+IDD_DLG_CHMANAGE DIALOGEX 0, 0, 412, 287
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "字库管理"
+FONT 10, "宋体", 700, 0, 0x86
+BEGIN
+    DEFPUSHBUTTON   "显示",IDOK,282,266,50,14
+    PUSHBUTTON      "确定",IDCANCEL,355,266,50,14
+    CONTROL         "",IDC_IMG_CHAR1,"Static",SS_BLACKFRAME,35,25,31,53
+    CONTROL         "",IDC_IMG_CHAR2,"Static",SS_BLACKFRAME,82,25,33,53
+    CONTROL         "",IDC_IMG_CHAR3,"Static",SS_BLACKFRAME,135,25,33,53
+    CONTROL         "",IDC_IMG_CHAR4,"Static",SS_BLACKFRAME,185,25,33,53
+    CONTROL         "",IDC_IMG_CHAR5,"Static",SS_BLACKFRAME,235,25,33,53
+    CONTROL         "",IDC_IMG_CHAR6,"Static",SS_BLACKFRAME,285,25,33,53
+    CONTROL         "",IDC_IMG_CHAR7,"Static",SS_BLACKFRAME,337,25,33,53
+    GROUPBOX        "识别",IDC_STATIC,15,15,382,103
+    PUSHBUTTON      "",IDC_BTN_CHAR1,36,83,21,21,BS_CENTER | WS_GROUP,WS_EX_TRANSPARENT
+    PUSHBUTTON      "",IDC_BTN_CHAR2,83,83,21,21,BS_CENTER,WS_EX_TRANSPARENT
+    PUSHBUTTON      "",IDC_BTN_CHAR3,134,83,21,21,BS_CENTER,WS_EX_TRANSPARENT
+    PUSHBUTTON      "",IDC_BTN_CHAR4,185,83,21,21,BS_CENTER,WS_EX_TRANSPARENT
+    PUSHBUTTON      "",IDC_BTN_CHAR5,233,83,21,21,BS_CENTER,WS_EX_TRANSPARENT
+    PUSHBUTTON      "",IDC_BTN_CHAR6,285,83,21,21,BS_CENTER,WS_EX_TRANSPARENT
+    PUSHBUTTON      "",IDC_BTN_CHAR7,336,83,21,21,BS_CENTER,WS_EX_TRANSPARENT
+    GROUPBOX        "汉字",IDC_STATIC,17,131,120,144
+    GROUPBOX        "字母",IDC_STATIC,145,131,130,131
+    PUSHBUTTON      "京",IDC_BUTTON1,26,140,17,16
+    PUSHBUTTON      "津",IDC_BUTTON2,50,140,17,16
+    PUSHBUTTON      "冀",IDC_BUTTON3,71,140,17,16
+    PUSHBUTTON      "晋",IDC_BUTTON4,93,140,17,16
+    PUSHBUTTON      "蒙",IDC_BUTTON5,114,140,17,16
+    PUSHBUTTON      "辽",IDC_BUTTON6,26,161,17,16
+    PUSHBUTTON      "吉",IDC_BUTTON7,50,161,17,16
+    PUSHBUTTON      "黑",IDC_BUTTON8,71,161,17,16
+    PUSHBUTTON      "沪",IDC_BUTTON9,93,161,17,16
+    PUSHBUTTON      "苏",IDC_BUTTON10,114,161,17,16
+    PUSHBUTTON      "浙",IDC_BUTTON11,26,181,17,16
+    PUSHBUTTON      "皖",IDC_BUTTON12,50,181,17,16
+    PUSHBUTTON      "闽",IDC_BUTTON13,71,181,17,16
+    PUSHBUTTON      "赣",IDC_BUTTON14,93,181,17,16
+    PUSHBUTTON      "鲁",IDC_BUTTON15,114,181,17,16
+    PUSHBUTTON      "豫",IDC_BUTTON16,26,200,17,16
+    PUSHBUTTON      "鄂",IDC_BUTTON17,50,200,17,16
+    PUSHBUTTON      "湘",IDC_BUTTON18,71,200,17,16
+    PUSHBUTTON      "粤",IDC_BUTTON19,93,200,17,16
+    PUSHBUTTON      "桂",IDC_BUTTON20,114,200,17,16
+    PUSHBUTTON      "琼",IDC_BUTTON21,26,218,17,16
+    PUSHBUTTON      "渝",IDC_BUTTON22,50,218,17,16
+    PUSHBUTTON      "川",IDC_BUTTON23,71,218,17,16
+    PUSHBUTTON      "贵",IDC_BUTTON24,93,218,17,16
+    PUSHBUTTON      "云",IDC_BUTTON25,114,218,17,16
+    PUSHBUTTON      "藏",IDC_BUTTON26,26,235,17,16
+    PUSHBUTTON      "陕",IDC_BUTTON27,50,235,17,16
+    PUSHBUTTON      "甘",IDC_BUTTON28,71,235,17,16
+    PUSHBUTTON      "青",IDC_BUTTON29,93,235,17,16
+    PUSHBUTTON      "宁",IDC_BUTTON30,114,235,17,16
+    PUSHBUTTON      "新",IDC_BUTTON31,26,255,17,16
+    PUSHBUTTON      "港",IDC_BUTTON32,50,255,17,16
+    PUSHBUTTON      "澳",IDC_BUTTON33,71,255,17,16
+    PUSHBUTTON      "学",IDC_BUTTON34,93,255,17,16
+    PUSHBUTTON      "警",IDC_BUTTON35,114,255,17,16
+    PUSHBUTTON      "A",IDC_BUTTON36,153,140,17,16
+    PUSHBUTTON      "B",IDC_BUTTON37,176,140,17,16
+    PUSHBUTTON      "C",IDC_BUTTON38,198,140,17,16
+    PUSHBUTTON      "D",IDC_BUTTON39,220,140,17,16
+    PUSHBUTTON      "E",IDC_BUTTON40,243,140,17,16
+    PUSHBUTTON      "F",IDC_BUTTON41,153,159,17,16
+    PUSHBUTTON      "G",IDC_BUTTON42,176,159,17,16
+    PUSHBUTTON      "H",IDC_BUTTON43,198,159,17,16
+    PUSHBUTTON      "I",IDC_BUTTON44,220,159,17,16
+    PUSHBUTTON      "J",IDC_BUTTON45,243,159,17,16
+    PUSHBUTTON      "K",IDC_BUTTON46,153,180,17,16
+    PUSHBUTTON      "L",IDC_BUTTON47,176,180,17,16
+    PUSHBUTTON      "M",IDC_BUTTON48,198,180,17,16
+    PUSHBUTTON      "N",IDC_BUTTON49,220,180,17,16
+    PUSHBUTTON      "O",IDC_BUTTON50,243,180,17,16
+    PUSHBUTTON      "P",IDC_BUTTON51,153,200,17,16
+    PUSHBUTTON      "Q",IDC_BUTTON52,176,200,17,16
+    PUSHBUTTON      "R",IDC_BUTTON53,198,200,17,16
+    PUSHBUTTON      "S",IDC_BUTTON54,220,200,17,16
+    PUSHBUTTON      "T",IDC_BUTTON55,243,200,17,16
+    PUSHBUTTON      "U",IDC_BUTTON56,153,219,17,16
+    PUSHBUTTON      "V",IDC_BUTTON57,176,219,17,16
+    PUSHBUTTON      "W",IDC_BUTTON58,198,219,17,16
+    PUSHBUTTON      "X",IDC_BUTTON59,220,219,17,16
+    PUSHBUTTON      "Y",IDC_BUTTON60,243,219,17,16
+    PUSHBUTTON      "Z",IDC_BUTTON61,153,238,17,16
+    GROUPBOX        "数字",IDC_STATIC,284,129,84,96
+    PUSHBUTTON      "1",IDC_BUTTON62,291,140,17,16
+    PUSHBUTTON      "2",IDC_BUTTON63,315,140,17,16
+    PUSHBUTTON      "3",IDC_BUTTON64,337,140,17,16
+    PUSHBUTTON      "4",IDC_BUTTON65,291,159,17,16
+    PUSHBUTTON      "5",IDC_BUTTON66,315,159,17,16
+    PUSHBUTTON      "6",IDC_BUTTON67,337,159,17,16
+    PUSHBUTTON      "7",IDC_BUTTON68,291,178,17,16
+    PUSHBUTTON      "8",IDC_BUTTON69,315,178,17,16
+    PUSHBUTTON      "9",IDC_BUTTON70,337,178,17,16
+    PUSHBUTTON      "0",IDC_BUTTON71,291,198,17,16
+END
+
+IDD_EDIT_DLG DIALOGEX 0, 0, 257, 121
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "模板训练"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_CHARLIB_DLG DIALOGEX 0, 0, 380, 236
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "字符模板"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,242,215,50,14
+    PUSHBUTTON      "取消",IDCANCEL,323,215,50,14
+    GROUPBOX        "字符库",IDC_STATIC,16,18,341,184
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "LPR.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "LPR.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_LPR_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 481
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 322
+    END
+
+    IDD_DLG_CHMANAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 405
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 280
+    END
+
+    IDD_EDIT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 250
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 114
+    END
+
+    IDD_CHARLIB_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 373
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 229
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 LPR(&A)..."
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\LPR.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "afxres.rc"     // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
