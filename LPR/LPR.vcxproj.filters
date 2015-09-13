@@ -13,12 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="Template">
+      <UniqueIdentifier>{2facd054-48c2-4768-a159-c256973ec3f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CharLibDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CharModelManage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="CharRecognition.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CharSegmentation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CharTrainDlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="LPHelper.cpp">
@@ -41,10 +53,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharLibDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CharModelManage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="CharRecognition.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="CharSegmentation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CharTrainDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="LPHelper.h">
@@ -70,17 +91,240 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\LPR.ico">
+    <Image Include="res\LPR.ico">
       <Filter>资源文件</Filter>
-    </None>
-    <None Include="res\LPR.rc2">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="ReadMe.txt" />
+    </Image>
+    <Image Include="Template\1.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\10.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\11.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\12.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\13.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\14.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\15.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\16.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\17.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\18.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\19.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\2.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\20.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\21.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\22.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\23.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\24.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\25.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\26.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\27.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\28.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\29.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\3.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\30.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\31.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\32.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\33.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\34.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\35.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\36.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\37.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\38.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\39.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\4.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\40.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\41.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\42.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\43.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\44.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\45.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\46.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\47.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\48.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\49.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\5.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\50.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\51.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\52.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\53.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\54.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\55.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\56.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\57.JPG">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\58.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\59.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\6.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\60.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\61.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\62.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\63.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\64.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\65.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\66.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\67.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\68.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\69.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\7.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\70.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\71.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\72.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\73.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\8.jpg">
+      <Filter>Template</Filter>
+    </Image>
+    <Image Include="Template\9.jpg">
+      <Filter>Template</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LPR.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\LPR.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
 </Project>

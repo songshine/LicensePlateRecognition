@@ -10,7 +10,7 @@
 
 // CCharModelManage 对话框
 
-IplImage** m_pCharImg=new IplImage*[7];    //保存字符图像
+IplImage** m_pCharImg=NULL;    //保存字符图像
 int  nNumChar;
 
 
@@ -22,7 +22,6 @@ CCharModelManage::CCharModelManage(CWnd* pParent /*=NULL*/)
 	, m_CharTrain(_T(""))
 	, m_ChoisChar(_T(""))
 {
-
 }
 
 CCharModelManage::~CCharModelManage()
@@ -38,7 +37,6 @@ void CCharModelManage::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CCharModelManage, CDialog)
 	ON_WM_PAINT()
 	ON_BN_CLICKED(IDOK, &CCharModelManage::OnBnClickedOk)
-	ON_STN_DBLCLK(IDC_IMG_CHAR1, &CCharModelManage::OnStnDblClkImgChar1)
 	ON_BN_CLICKED(IDC_BTN_CHAR1, &CCharModelManage::OnBtnBtnChar1)
 	ON_BN_CLICKED(IDC_BTN_CHAR2, &CCharModelManage::OnBtnChar2)
 	ON_BN_CLICKED(IDC_BTN_CHAR3, &CCharModelManage::OnBtnChar3)
@@ -125,11 +123,15 @@ END_MESSAGE_MAP()
 
 void CCharModelManage::ShowImage(void)
 {
-	for(int i=0;i<7;i++)
+	if(m_pCharImg != NULL)
 	{
-		if(m_pCharImg[i] != NULL)
-			DrawPicToHDC(m_pCharImg[i],IDC_IMG_CHAR1+i);
+		for(int i=0;i<7;i++)
+		{
+			if(m_pCharImg[i] != NULL)
+				DrawPicToHDC(m_pCharImg[i],IDC_IMG_CHAR1+i);
+		}
 	}
+	
 }
 
 void CCharModelManage::DrawPicToHDC(IplImage* img, UINT ID)
@@ -139,7 +141,7 @@ void CCharModelManage::DrawPicToHDC(IplImage* img, UINT ID)
 	CRect rect;
 	GetDlgItem(ID)->GetClientRect(&rect);
    
-	if (img)
+	if (img != NULL)
 	{ 
 		CvvImage cimg;
 		cimg.CopyOf(img,3);
@@ -161,6 +163,10 @@ BOOL CCharModelManage::OnInitDialog()
 	
     if (pWnd->m_pImgChar!=NULL&&pWnd->m_nCharNum!=0)
 	{
+		if(m_pCharImg == NULL)
+		{
+			m_pCharImg = new IplImage*[TOTAL_CHAR];
+		}
 		for (int i=0;i<pWnd->m_nCharNum;i++)
 		{
 			m_pCharImg[i]=pWnd->m_pImgChar[i];
@@ -221,14 +227,14 @@ void CCharModelManage::OnPaint()
 void CCharModelManage::OnBnClickedOk()
 {
 	// TODO: 在此添加控件通知处理程序代码
-   CStatic *m_stcImg=new CStatic;
+   /*CStatic *m_stcImg=new CStatic;
    CRect rect(50,180,90,250);
   m_stcImg->Create("",WS_CHILD|WS_VISIBLE|SS_BLACKFRAME,rect,this);
 
-   DrawPicToHDC(m_pCharImg[2],m_stcImg->GetDlgCtrlID());
+   DrawPicToHDC(m_pCharImg[2],m_stcImg->GetDlgCtrlID());*/
 	//ShowImage();
 	//ShowChar();
-	//OnOK();
+	OnOK();
 }
 
 void CCharModelManage::ShowChar(void)
@@ -242,18 +248,20 @@ void CCharModelManage::ShowChar(void)
 
    for (int i=0;i<7;i++)
    {
-	   ((CButton*)GetDlgItem(IDC_BTN_CHAR1+i))->SetWindowText(m_ch[i]);
+	   if(m_ch[i] != "")
+	   {
+		   ((CButton*)GetDlgItem(IDC_BTN_CHAR1+i))->SetWindowText(m_ch[i]);
+	   }
+	   else
+	   {
+		   ((CButton*)GetDlgItem(IDC_BTN_CHAR1+i))->EnableWindow(FALSE);
+	   }
    }
   
    
 
 }
 
-void CCharModelManage::OnStnDblClkImgChar1()
-{
-	// TODO: 在此添加控件通知处理程序代码
-	
-}
 
 void CCharModelManage::OnBtnBtnChar1()
 {
@@ -272,6 +280,7 @@ void CCharModelManage::OnBtnBtnChar1()
 		{
 			m_pCharImg[0]=t_Resize(m_pCharImg[0],cvSize(WIDTH,HEIGHT));
 			GreyValueCollection(m_pCharImg[0],CharIndex);
+			((CButton*)GetDlgItem(IDC_BTN_CHAR1+0))->SetWindowText(m_CharTrain);
 		}
 
 
@@ -293,6 +302,7 @@ void CCharModelManage::OnBtnChar2()
 		{
 		    m_pCharImg[1]=t_Resize(m_pCharImg[1],cvSize(WIDTH,HEIGHT));
 		    GreyValueCollection(m_pCharImg[1],CharIndex);
+			((CButton*)GetDlgItem(IDC_BTN_CHAR1+1))->SetWindowText(m_CharTrain);
 		}
 	}
 }
@@ -311,6 +321,7 @@ void CCharModelManage::OnBtnChar3()
 		{
 		    m_pCharImg[2]=t_Resize(m_pCharImg[2],cvSize(WIDTH,HEIGHT));
 		    GreyValueCollection(m_pCharImg[2],CharIndex);
+			((CButton*)GetDlgItem(IDC_BTN_CHAR1+2))->SetWindowText(m_CharTrain);
 		}
 	}
 }
@@ -329,6 +340,7 @@ void CCharModelManage::OnBtnChar4()
 		{
 		    m_pCharImg[3]=t_Resize(m_pCharImg[3],cvSize(WIDTH,HEIGHT));
 		    GreyValueCollection(m_pCharImg[3],CharIndex);
+			((CButton*)GetDlgItem(IDC_BTN_CHAR1+3))->SetWindowText(m_CharTrain);
 		}
 	}
 }
@@ -347,6 +359,7 @@ void CCharModelManage::OnBtnChar5()
 		{
 		     m_pCharImg[4]=t_Resize(m_pCharImg[4],cvSize(WIDTH,HEIGHT));
 		    GreyValueCollection(m_pCharImg[4],CharIndex);
+			((CButton*)GetDlgItem(IDC_BTN_CHAR1+4))->SetWindowText(m_CharTrain);
 		}
 	}
 }
@@ -364,6 +377,7 @@ void CCharModelManage::OnBtnChar6()
 		{
 		    m_pCharImg[5]=t_Resize(m_pCharImg[5],cvSize(WIDTH,HEIGHT));
 		    GreyValueCollection(m_pCharImg[5],CharIndex);
+			((CButton*)GetDlgItem(IDC_BTN_CHAR1+5))->SetWindowText(m_CharTrain);
 		}
 	}
 }
@@ -381,6 +395,7 @@ void CCharModelManage::OnBtnChar7()
 		{
 		    m_pCharImg[6]=t_Resize(m_pCharImg[6],cvSize(WIDTH,HEIGHT));
 		    GreyValueCollection(m_pCharImg[6],CharIndex);
+			((CButton*)GetDlgItem(IDC_BTN_CHAR1+6))->SetWindowText(m_CharTrain);
 		}
 	}
 	

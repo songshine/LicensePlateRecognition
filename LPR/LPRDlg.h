@@ -84,6 +84,7 @@ public:
 	CString m_DesFilePath;
 	CString m_filePath;
 	CString m_filename;
+	afx_msg void OnStnClickedImagesrc();
 };
 
 

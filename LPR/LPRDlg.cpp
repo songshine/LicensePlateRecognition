@@ -77,6 +77,7 @@ CLPRDlg::CLPRDlg(CWnd* pParent /*=NULL*/)
 
 	m_nCharNum = 0;
 	m_pImgLPR = NULL;
+	m_pImgChar = NULL;
 
 }
 
@@ -101,6 +102,7 @@ BEGIN_MESSAGE_MAP(CLPRDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON4, &CLPRDlg::OnBtnChLib)
 	ON_BN_CLICKED(IDC_BUTTON2, &CLPRDlg::OnBtnRecogError)
 	ON_BN_CLICKED(IDC_BUTTON3, &CLPRDlg::OnBtnSegmentFail)
+	ON_STN_CLICKED(IDC_IMAGESRC, &CLPRDlg::OnStnClickedImagesrc)
 END_MESSAGE_MAP()
 
 
@@ -134,10 +136,10 @@ BOOL CLPRDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 
-	int num=ScanCharNumFrmFile("./Data/Standard.Model",CHAR_HEIGHT);      //检测标准模板库是否存在
+	int num=ScanCharNumFrmFile("./Data/Standard.Model",HEIGHT);      //检测标准模板库是否存在
 	if (num==0)
 	{
-		DirImgWrite2File("F:/OpenCV/LPR_NEW1.04_TEST/LPR/LPR/标准模板/","Standard.Model",cvSize(WIDTH,HEIGHT));
+		DirImgWrite2File("./Template/","Standard.Model",cvSize(WIDTH,HEIGHT));
 	}
 
 	dataCvt2Mat32fc1();             //此处将模板数据导入矩阵中
@@ -317,6 +319,19 @@ CString CLPRDlg::CharReco(IplImage** charImg,int charnum)
 void CLPRDlg::OnBnClickedBtnLpr()
 {//进行图像识别
 
+	if(m_nCharNum != NULL)
+	{
+		for(int i=0;i<m_nCharNum;i++)
+		{
+			if(m_pImgChar[i] != NULL)
+			{
+				cvReleaseImage(&m_pImgChar[i]);
+				m_pImgChar[i]= NULL;
+			}
+		}
+	}
+	
+
 	//获取初始时间
 	long timeSart,timeSpend=0,timeSpendLoc=0,timeSpendSeg=0,timeSpendRec=0;
 	timeSart = GetTickCount(); 
@@ -339,7 +354,9 @@ void CLPRDlg::OnBnClickedBtnLpr()
 	img_lpr_gray = LPLocate(m_imgSrc,&rectLPR,&color);
 	timeSpendLoc = GetTickCount()-timeSart;
 
-
+	//cvShowImage("img_lpr",img_lpr_gray);
+	//cvWaitKey(0);
+ //   
 	if(img_lpr_gray == NULL)
 	{
 		MessageBox("定位车牌失败...\n");
@@ -407,14 +424,7 @@ void CLPRDlg::OnBnClickedBtnLpr()
 
 	cvReleaseImage(&img_lpr_gray);
 	//cvReleaseImage(&img_half);
-	cvReleaseImage(&m_imgSrc);
-	for(int i=0;i<m_nCharNum;i++)
-	{
-		if(m_pImgChar[i] != NULL)
-		{
-			cvReleaseImage(&m_pImgChar[i]);
-		}
-	}
+	cvReleaseImage(&m_imgSrc);	
 
 }
 
@@ -453,7 +463,7 @@ void CLPRDlg::OnBtnCharLib()
 	// TODO: 在此添加控件通知处理程序代码
 	//CharLibDlg dlg;
     //CharModelManage dlg;
-	m_DesFilePath="F:\\OpenCV\\图片\\识别正确";
+	m_DesFilePath=".\\CorrectResult";
 	FileCopyTo(m_filePath,m_DesFilePath,m_filename,1);
 	MessageBox("Copy Done!");
 }
@@ -472,7 +482,7 @@ void CLPRDlg::OnBtnChLib()
 void CLPRDlg::OnBtnRecogError()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	m_DesFilePath="F:\\OpenCV\\图片\\识别有误";
+	m_DesFilePath=".\\WrongResult";
 	FileCopyTo(m_filePath,m_DesFilePath,m_filename,1);
 	MessageBox("Copy Done!");
 }
@@ -483,4 +493,9 @@ void CLPRDlg::OnBtnSegmentFail()
 	m_DesFilePath="F:\\OpenCV\\图片\\分割错误";
 	FileCopyTo(m_filePath,m_DesFilePath,m_filename,1);
 	MessageBox("Copy Done!");
+}
+
+void CLPRDlg::OnStnClickedImagesrc()
+{
+	// TODO: 在此添加控件通知处理程序代码
 }

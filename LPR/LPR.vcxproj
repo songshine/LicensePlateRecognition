@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -7,10 +7,6 @@
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Template|Win32">
-      <Configuration>Template</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
@@ -22,12 +18,14 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>NotSet</CharacterSet>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
@@ -42,25 +40,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" />
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;C:\OpenCV2.0\include\opencv</IncludePath>
-    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;C:\OpenCV2.1\lib</LibraryPath>
-    <SourcePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\OpenCV2.0\src\cvaux;C:\OpenCV2.0\src\cv;C:\OpenCV2.0\src\cxcore;C:\OpenCV2.0\src\highgui;$(SourcePath)</SourcePath>
+    <_ProjectFileVersion>14.0.23107.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>G:\Runtime\Opencv\include\opencv;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Runtime\Opencv\lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>G:\Runtime\Opencv\bin;$(ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -76,7 +69,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -84,9 +77,11 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>cxcore.lib;cv.lib;ml.lib;cvaux.lib;highgui.lib;cvcam.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>cxcore200d.lib;cv200d.lib;ml200d.lib;cvaux200d.lib;highgui200d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
@@ -99,7 +94,7 @@
     <ClCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -110,21 +105,26 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>cxcore200d.lib;cv200d.lib;ml200d.lib;cvaux200d.lib;highgui200d.lib;opencv_imgproc230d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>cxcore200.lib;cv200.lib;ml200.lib;cvaux200.lib;highgui200.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CharLibDlg.cpp" />
+    <ClCompile Include="CharModelManage.cpp" />
     <ClCompile Include="CharRecognition.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="CharSegmentation.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="CharTrainDlg.cpp" />
     <ClCompile Include="LPHelper.cpp" />
     <ClCompile Include="LPLocation.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
@@ -140,8 +140,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharLibDlg.h" />
+    <ClInclude Include="CharModelManage.h" />
     <ClInclude Include="CharRecognition.h" />
     <ClInclude Include="CharSegmentation.h" />
+    <ClInclude Include="CharTrainDlg.h" />
     <ClInclude Include="LPHelper.h" />
     <ClInclude Include="LPLocation.h" />
     <ClInclude Include="LPR.h" />
@@ -151,12 +154,89 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\LPR.ico" />
-    <None Include="res\LPR.rc2" />
-    <None Include="ReadMe.txt" />
+    <Image Include="res\LPR.ico" />
+    <Image Include="Template\1.jpg" />
+    <Image Include="Template\10.jpg" />
+    <Image Include="Template\11.jpg" />
+    <Image Include="Template\12.jpg" />
+    <Image Include="Template\13.jpg" />
+    <Image Include="Template\14.jpg" />
+    <Image Include="Template\15.jpg" />
+    <Image Include="Template\16.jpg" />
+    <Image Include="Template\17.jpg" />
+    <Image Include="Template\18.jpg" />
+    <Image Include="Template\19.jpg" />
+    <Image Include="Template\2.jpg" />
+    <Image Include="Template\20.jpg" />
+    <Image Include="Template\21.jpg" />
+    <Image Include="Template\22.jpg" />
+    <Image Include="Template\23.jpg" />
+    <Image Include="Template\24.jpg" />
+    <Image Include="Template\25.jpg" />
+    <Image Include="Template\26.jpg" />
+    <Image Include="Template\27.jpg" />
+    <Image Include="Template\28.jpg" />
+    <Image Include="Template\29.jpg" />
+    <Image Include="Template\3.jpg" />
+    <Image Include="Template\30.jpg" />
+    <Image Include="Template\31.jpg" />
+    <Image Include="Template\32.jpg" />
+    <Image Include="Template\33.jpg" />
+    <Image Include="Template\34.jpg" />
+    <Image Include="Template\35.jpg" />
+    <Image Include="Template\36.jpg" />
+    <Image Include="Template\37.jpg" />
+    <Image Include="Template\38.jpg" />
+    <Image Include="Template\39.jpg" />
+    <Image Include="Template\4.jpg" />
+    <Image Include="Template\40.jpg" />
+    <Image Include="Template\41.JPG" />
+    <Image Include="Template\42.JPG" />
+    <Image Include="Template\43.JPG" />
+    <Image Include="Template\44.JPG" />
+    <Image Include="Template\45.JPG" />
+    <Image Include="Template\46.jpg" />
+    <Image Include="Template\47.JPG" />
+    <Image Include="Template\48.JPG" />
+    <Image Include="Template\49.JPG" />
+    <Image Include="Template\5.jpg" />
+    <Image Include="Template\50.JPG" />
+    <Image Include="Template\51.JPG" />
+    <Image Include="Template\52.JPG" />
+    <Image Include="Template\53.jpg" />
+    <Image Include="Template\54.JPG" />
+    <Image Include="Template\55.JPG" />
+    <Image Include="Template\56.JPG" />
+    <Image Include="Template\57.JPG" />
+    <Image Include="Template\58.jpg" />
+    <Image Include="Template\59.jpg" />
+    <Image Include="Template\6.jpg" />
+    <Image Include="Template\60.jpg" />
+    <Image Include="Template\61.jpg" />
+    <Image Include="Template\62.jpg" />
+    <Image Include="Template\63.jpg" />
+    <Image Include="Template\64.jpg" />
+    <Image Include="Template\65.jpg" />
+    <Image Include="Template\66.jpg" />
+    <Image Include="Template\67.jpg" />
+    <Image Include="Template\68.jpg" />
+    <Image Include="Template\69.jpg" />
+    <Image Include="Template\7.jpg" />
+    <Image Include="Template\70.jpg" />
+    <Image Include="Template\71.jpg" />
+    <Image Include="Template\72.jpg" />
+    <Image Include="Template\73.jpg" />
+    <Image Include="Template\8.jpg" />
+    <Image Include="Template\9.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LPR.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\LPR.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -110,6 +110,8 @@ void DirImgWrite2File(CString fpath,CString fpathName,CvSize imgSz);
 
 int ReturnCharIndex(CString strName);    //根据字符返回字符索引
 
+CvMat GetStandardMatByIndex(int index);
+
 CString GetPathByIndexChar(int index);
 /*******************读取文件数据******/
 double** ReadFromFile(CString filename,CvSize szChar,int NumChar);

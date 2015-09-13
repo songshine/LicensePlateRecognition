@@ -28,6 +28,9 @@ CButton m_btnOK;
 CButton m_btnCancel;
 CRect *rectStc;
 CStatic *m_stc;
+IplImage **imgChar;    //保存从文件读取出来字符图片
+
+int   NumChar;             //保存图片数
 	
 afx_msg void OnBtnOk();
 	
@@ -40,6 +43,8 @@ afx_msg void OnBtnOk();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	void DrawPicToHDC(IplImage* img, UINT ID);
 	double** ReadFromFile(CString filename, int NumChar);
+	void DeleteRows(CString filename, int startRowIndex, int endRowIndex);
+	virtual afx_msg BOOL OnCommand(WPARAM wParam, LPARAM lParam);
 	afx_msg void OnPaint();
 	void ShowImage(void);
 

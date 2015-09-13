@@ -30,7 +30,7 @@ CvMat *T_mat=new CvMat[73];
 //double** dataMultiTem;
 
 //全局函数
-void LoadMatConvert(CvMat *mat_64fc1,CvMat *mat_32fc1,double data[][24*48],CvSize szMat,int num)
+void LoadMatConvert(CvMat *mat_64fc1,CvMat *mat_32fc1,double data[][HEIGHT*WIDTH],CvSize szMat,int num)
 //void LoadMatConvert(CvMat *mat_64fc1,CvMat *mat_32fc1,double data[][MAT_ROW*MAT_COLS],int num)
 {
 
@@ -624,7 +624,10 @@ char* ReturnChar2(int mark)
 	}
 	return charac;
 }
-
+CvMat GetStandardMatByIndex(int index)
+{
+	return Tmat_32fc1[index];
+}
 
 int ReturnCharIndex(CString strName)
 {
@@ -1202,7 +1205,7 @@ void ChRecgUseMultiTemplate(IplImage* img_chars,Char_Letter* ch,bool UseReturnCh
 	{
 		strImgfp[i]=GetPathByIndexChar(ch->mark_max[i]);   //获取文件路径
 
-		numChar[i]=ScanCharNumFrmFile(strImgfp[i],CHAR_HEIGHT);//获取文件中图片数目
+		numChar[i]=ScanCharNumFrmFile(strImgfp[i],HEIGHT);//获取文件中图片数目
 
 		numChar[i]>0?numChar[i]:numChar[i]=1;           //如果图像为0则取值为1
 
@@ -1239,7 +1242,7 @@ void ChRecgUseMultiTemplate(IplImage* img_chars,Char_Letter* ch,bool UseReturnCh
 
 	delete [] maxV;
 	delete [] strImgfp;
-    delete [] numChar;
+   
 
 	for (int i=0;i<7;i++)
 	{
@@ -1254,6 +1257,7 @@ void ChRecgUseMultiTemplate(IplImage* img_chars,Char_Letter* ch,bool UseReturnCh
 	}
 
 	delete [] data;
+	delete [] numChar;
 		
 	
 }
@@ -1394,10 +1398,10 @@ void GreyValueCollection(IplImage* pImg,char* fname)
 {
 	//IplImage* pImg;
 	//pImg = cvLoadImage( "F:\\OpenCV\\车牌识别_字符\\binary chars24X48\\38.jpg", CV_LOAD_IMAGE_GRAYSCALE );
-	FILE *fp;
+	FILE *fp=NULL;
 	//char temp[4]=NULL;
 	//"character_DB.dat"
-	fp=fopen(fname,"a");
+	fp=fopen(fname,"a+");
 
 	char* tem=new char[4];
 
@@ -1929,14 +1933,14 @@ double EuclideanDistance(charVector *Sr,charVector *Te,int methodType)
 			double dh=0.0;      //水平投影相似值
 
 			//计算竖直投影的欧式距离
-			for(int i=0;i<24;i++)
+			for(int i=0;i<HEIGHT;i++)
 			{
 				dv+=pow((double)Sr->col_count[i]-Te->col_count[i],2);
 			}
 			dv=sqrt((double)dv);
 
 			//计算水平投影的欧式距离
-			for(int i=0;i<48;i++)
+			for(int i=0;i<WIDTH;i++)
 			{
 				dh+=pow((double)Sr->row_count[i]-Te->row_count[i],2);
 			}
@@ -2763,17 +2767,13 @@ int ScanCharNumFrmFile(CString filename,int charHeight)
 	char lin[1024]={0};
 
 	int m=0;
-	int k=0;
-	if (fp!=NULL)
+	while (fp.getline(lin, sizeof(lin)))
 	{
-		while (fp.getline(lin,sizeof(lin)))
-		{
-			m++;          //统计行数
-		}
-
-		fp.clear();
-		fp.close();
+		m++;          //统计行数
 	}
+
+	fp.clear();
+	fp.close();
 
 	
 	return m/charHeight;     //字符大小24*48
@@ -2966,7 +2966,7 @@ void dataCvt2Mat32fc1()
 	//ReadFromFile()
 	//LoadMatConvert(Tmat_64fc1,Tmat_32fc1,data,cvSize(24,48),73);
 
-	int num=ScanCharNumFrmFile("./Data/Standard.Model",CHAR_HEIGHT);
+	int num=ScanCharNumFrmFile("./Data/Standard.Model",HEIGHT);
 	Tdata=ReadFromFile("./Data/Standard.Model",cvSize(WIDTH,HEIGHT),num);
 	LoadMatConvert1(Tmat_64fc1,Tmat_32fc1,Tdata,cvSize(WIDTH,HEIGHT),num);
 

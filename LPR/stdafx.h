@@ -53,7 +53,6 @@
 #define  HEIGHT    30// 48
 #define  WIDTH     16// 24
 
-#define  CHAR_HEIGHT    30//48
 
 #define  CHINESES_CHAR 1           //仅仅选择汉字字符库
 #define  LETTER_CHAR   2           //仅仅选择字母字母库
@@ -61,7 +60,7 @@
 #define  LETTER_NUM_CHINESE    4     //字母、数字、汉字
 #define  FEATURE_BY_PRJ        0     //根据投影取特征值
 #define  FEATURE_BY_GRID       1     //根据网格法提取特征值
-
+#define TOTAL_CHAR 7
 
 struct Char_Letter 
 {

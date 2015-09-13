@@ -125,12 +125,12 @@ IplImage* LPLocate(const IplImage* src,CvRect* rect,int* color)
 	int rectNum;	
 	long timeSart,timeSpendA = 0,timeSpendC=0,timeSpendL = 0;
 	timeSart = GetTickCount();
-	if(src->width * src->height > MAX_PIC_AREA)
-	{
-		bflagG = 1;
-		g_img = GetRectImage(src,cvRect(0,src->height/2,src->width,src->height/2));
-	}
-	else
+	//if(src->width * src->height > MAX_PIC_AREA)
+	//{
+	//	bflagG = 1;
+	//	g_img = GetRectImage(src,cvRect(0,src->height/2,src->width,src->height/2));
+	//}
+	//else
 	{
 		g_img = cvCloneImage(src);
 	}
@@ -211,14 +211,17 @@ int LPCoarseLocate(CvRect** rect)
 	/*1.顶帽操作*/
 	cvMorphologyEx(g_img_gray,g_img_foreground,NULL,element0,CV_MOP_TOPHAT,1);
 	t1 = GetTickCount() - ts;
+	cvSaveImage("D:\song_fore.jpg", g_img_foreground);
 	/*图像二值化*/
 	double me = cvMean(g_img_foreground);
-	cvThreshold(g_img_foreground,g_img_bw,/*min(30,8+pow(2,me))*/8+me,255,CV_THRESH_BINARY);
+	cvThreshold(g_img_foreground,g_img_bw,/*min(30,8+pow(2,me))*/5+me,255,CV_THRESH_BINARY);
 	SmoothBinImg(g_img_bw,24,SMOOTH_WHITE_CC);
 	cvNot(g_img_bw,g_img_bw);
-
+    cvSaveImage("D:\song_bw.jpg", g_img_bw);
 	t2 = GetTickCount() - ts - t1;
 	TwiceDiff(g_img_bw,g_img_canny,g_img_gray);
+
+	cvSaveImage("D:\song_canny.jpg", g_img_canny);
 	//SmoothBinImg(g_img_canny,16,SMOOTH_WHITE_CC);
 	//Cnp(g_img_canny,g_img_canny);
 	FindLprAboutEdgeDensity(g_img_canny,img_mo);
@@ -226,9 +229,11 @@ int LPCoarseLocate(CvRect** rect)
 	t3 = GetTickCount() - ts - t1 -t2;
 	//cvShowImage("img_canny",g_img_canny);
 	//cvShowImage("img_mo",img_mo);
+	cvSaveImage("D:\song_mo.jpg", img_mo);
 	contourNum = cvFindContours(img_mo, storage, &contour, sizeof(CvContour),
 		mode, CV_CHAIN_APPROX_SIMPLE,cvPoint(0,0));
 	(*rect) = (CvRect*)malloc(sizeof(CvRect)*contourNum);
+   
 	for(;contour!=0;contour=contour->h_next)
 	{	
 		float avg,var;
